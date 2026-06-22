@@ -1,0 +1,13 @@
+# Hermes Agent Configuration Template
+# Place this in ~/.hermes/config.yaml (or /var/www/.hermes/config.yaml)
+
+# =============================================================================
+# Model Configuration
+# =============================================================================
+model:
+  # Default model to use (recommended: gemini-3-flash for speed and low cost)
+  default: "gemini-3-flash"
+  
+  # Inference provider selection:
+  # Use "gemini" for direct Google AI Studio connection (requires GEMINI_API_KEY / GOOGLE_API_KEY)
+  provider: "gemini"

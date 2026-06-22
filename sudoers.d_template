@@ -1,0 +1,3 @@
+# Allow www-data (the user running Hermes agent) to restart the hamrahvision service
+# without prompting for a sudo password.
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl restart hamrahvision
