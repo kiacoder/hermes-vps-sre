@@ -58,3 +58,10 @@ python3 /var/www/hamrahvision/inject_error.py
 sudo systemctl restart hamrahvision
 ```
 Then message your bot: *"The homepage is down, please check the error and restart hamrahvision."*
+
+---
+
+## 📺 Follow the Tutorial
+*   **YouTube (English)**: [@HesabAgent](https://www.youtube.com/@HesabAgent)
+*   **Aparat (Persian)**: [Kia_coder](https://www.aparat.com/Kia_coder)
+
