@@ -1,3 +1,6 @@
-# Allow www-data (the user running Hermes agent) to restart the hamrahvision service
-# without prompting for a sudo password.
+# Safe, expanded SRE permissions for www-data (running Hermes Agent)
+# Allows checking status, restarting the app, and reading logs without full root.
 www-data ALL=(root) NOPASSWD: /usr/bin/systemctl restart hamrahvision
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl status hamrahvision
+www-data ALL=(root) NOPASSWD: /usr/bin/journalctl -u hamrahvision*
+www-data ALL=(root) NOPASSWD: /usr/bin/journalctl -u hamrahvision -n *
