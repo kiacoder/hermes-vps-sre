@@ -11,3 +11,10 @@ model:
   # Inference provider selection:
   # Use "gemini" for direct Google AI Studio connection (requires GEMINI_API_KEY / GOOGLE_API_KEY)
   provider: "gemini"
+# =============================================================================
+# Agent Configuration
+# =============================================================================
+agent:
+  # Controlling reasoning time vs speed (options: low, medium, high)
+  # Set to low for faster, lighter execution with gemini-3.5-flash
+  reasoning_effort: "low"
