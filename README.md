@@ -15,7 +15,7 @@ This repository contains all the configuration files, security policies, and sim
 
 ---
 
-## 🚀 Step-by-Step VPS Installation Guide
+## 🚀 Simplified 3-Step VPS Installation Guide
 
 ### 1. Install Hermes Agent
 Run the official Nous Hermes installer in non-interactive mode:
@@ -23,41 +23,28 @@ Run the official Nous Hermes installer in non-interactive mode:
 curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash -s -- --non-interactive --skip-setup
 ```
 
-### 2. Move Configuration for Security
-Move the settings folder to the web daemon's home directory so it runs under a non-root user (`www-data`):
+### 2. Download this Repository
+Clone the repository templates to a temporary folder:
 ```bash
-cp -r /root/.hermes /var/www/.hermes
-chown -R www-data:www-data /var/www/.hermes
+git clone https://github.com/kiacoder/hermes-vps-sre.git /tmp/hermes-sre
 ```
 
-### 3. Apply Configuration Files
-Copy the customized `config.yaml`, `SOUL.md`, and `.env` templates from this repository into `/var/www/.hermes/` (be sure to fill in your `TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_USERS`, and `GEMINI_API_KEY` in `.env`).
-
-### 4. Set Up Sudoers Policy
-Copy the `sudoers.d_template` to `/etc/sudoers.d/www-data-hamrahvision` and set permissions:
+### 3. Run the Setup Wizard
+Execute the automated wizard script to configure, secure, and start the daemon in one go:
 ```bash
-chmod 0440 /etc/sudoers.d/www-data-hamrahvision
-visudo -cf /etc/sudoers.d/www-data-hamrahvision
+bash /tmp/hermes-sre/setup.sh
 ```
+*The script will ask for your Gemini API Key, Telegram Bot Token, and allowed User ID. It will then automatically configure files, set permission controls, deploy the sudoers security policy, and start the system service!*
 
-### 5. Install & Start Gateway Daemon
-Install and start the system service to keep the Telegram bot running in the background:
-```bash
-hermes gateway install --system --run-as-user www-data
-# Answer 'n' to starting immediately, 'y' to starting automatically on boot.
+---
 
-# Start the system daemon:
-sudo systemctl start hermes-gateway
-sudo systemctl status hermes-gateway
-```
-
-### 6. Simulating a Crash
-To trigger the live repair simulation:
+## 💥 Simulating a Crash
+To trigger the live SRE repair demonstration during video recordings:
 ```bash
 python3 /var/www/hamrahvision/inject_error.py
 sudo systemctl restart hamrahvision
 ```
-Then message your bot: *"The homepage is down, please check the error and restart hamrahvision."*
+Then message your Telegram bot: *"The homepage is down, please check the error and restart hamrahvision."*
 
 ---
 
