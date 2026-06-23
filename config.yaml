@@ -5,8 +5,8 @@
 # Model Configuration
 # =============================================================================
 model:
-  # Default model to use (recommended: gemini-2.5-pro for advanced coding & reasoning)
-  default: "gemini-2.5-pro"
+  # Default model to use (recommended: gemini-3.5-flash for speed and low cost)
+  default: "gemini-3.5-flash"
   
   # Inference provider selection:
   # Use "gemini" for direct Google AI Studio connection (requires GEMINI_API_KEY / GOOGLE_API_KEY)
