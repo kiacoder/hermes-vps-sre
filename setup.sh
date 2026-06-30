@@ -9,9 +9,13 @@ echo "--------------------------------------------------"
 read -rp "🔑 Enter your Gemini API Key: " GEMINI_API_KEY
 read -rp "🤖 Enter your Telegram Bot Token: " TELEGRAM_BOT_TOKEN
 read -rp "👤 Enter your Telegram User ID (allowed user): " TELEGRAM_ALLOWED_USERS
+read -rp "📂 Enter your Project absolute path (default: /var/www/my-project): " PROJECT_PATH
+PROJECT_PATH=${PROJECT_PATH:-/var/www/my-project}
+read -rp "⚙️ Enter your systemd Service Name (default: my-project): " SERVICE_NAME
+SERVICE_NAME=${SERVICE_NAME:-my-project}
 
 echo ""
-echo "🚀 Starting automated deployment..."
+echo "🚀 Starting automated deployment for project: $SERVICE_NAME..."
 
 # 1. Move configuration directory for security (run-as www-data)
 echo "📦 Configuring directory ownership and permissions..."
@@ -20,10 +24,14 @@ if [ -d /root/.hermes ]; then
 fi
 mkdir -p /var/www/.hermes
 
-# 2. Copy config.yaml and SOUL.md personality
+# 2. Copy and customize config.yaml and SOUL.md personality
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 cp "$SCRIPT_DIR/config.yaml" /var/www/.hermes/config.yaml
-cp "$SCRIPT_DIR/SOUL.md" /var/www/.hermes/SOUL.md
+
+echo "📝 Customizing agent personality bindings..."
+sed -e "s|{{PROJECT_PATH}}|$PROJECT_PATH|g" \
+    -e "s|{{SERVICE_NAME}}|$SERVICE_NAME|g" \
+    "$SCRIPT_DIR/SOUL.md" > /var/www/.hermes/SOUL.md
 
 # 3. Create the secure .env file
 echo "🔐 Creating secure .env configuration..."
@@ -39,9 +47,9 @@ chown -R www-data:www-data /var/www/.hermes
 
 # 4. Deploy sudoers policy
 echo "🛡️ Deploying sudoers diagnostic permissions..."
-cp "$SCRIPT_DIR/sudoers.d_template" /etc/sudoers.d/www-data-hamrahvision
-chmod 0440 /etc/sudoers.d/www-data-hamrahvision
-visudo -cf /etc/sudoers.d/www-data-hamrahvision
+sed "s|{{SERVICE_NAME}}|$SERVICE_NAME|g" "$SCRIPT_DIR/sudoers.d_template" > /etc/sudoers.d/www-data-$SERVICE_NAME
+chmod 0440 /etc/sudoers.d/www-data-$SERVICE_NAME
+visudo -cf /etc/sudoers.d/www-data-$SERVICE_NAME
 
 # 5. Install and launch gateway daemon
 echo "⚙️ Registering and launching system service..."

@@ -1,6 +1,6 @@
 # Safe, expanded SRE permissions for www-data (running Hermes Agent)
 # Allows checking status, restarting the app, and reading logs without full root.
-www-data ALL=(root) NOPASSWD: /usr/bin/systemctl restart hamrahvision
-www-data ALL=(root) NOPASSWD: /usr/bin/systemctl status hamrahvision
-www-data ALL=(root) NOPASSWD: /usr/bin/journalctl -u hamrahvision*
-www-data ALL=(root) NOPASSWD: /usr/bin/journalctl -u hamrahvision -n *
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl restart {{SERVICE_NAME}}
+www-data ALL=(root) NOPASSWD: /usr/bin/systemctl status {{SERVICE_NAME}}
+www-data ALL=(root) NOPASSWD: /usr/bin/journalctl -u {{SERVICE_NAME}}*
+www-data ALL=(root) NOPASSWD: /usr/bin/journalctl -u {{SERVICE_NAME}} -n *
