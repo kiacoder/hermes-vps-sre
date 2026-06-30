@@ -74,6 +74,13 @@ Then message your Telegram bot: *"The homepage is down, please check the error a
 
 ---
 
+## ⚠️ Personality Alignment Warning / هشدار هماهنگی شخصیت ربات
+
+*   **English**: The personality of the SRE bot (**Ron Weasley**) is hard-coded in `SOUL.md` which loads by default. If you change the Telegram bot character name (e.g. to *Harry Potter*), the agent's inner prompt and responses will not line up. You need to update both the `SOUL.md` file contents and the Telegram bot display name (via @BotFather) together to keep them consistent!
+*   **Persian**: شخصیت ربات پشتیبان سرور (**رون ویزلی**) به صورت ثابت در فایل `SOUL.md` تعریف شده است. اگر نام کاراکتر ربات را در تلگرام به چیز دیگری (مثلاً *هری پاتر*) تغییر دهید، لحن صحبت و رفتار ایجنت با نام کاراکتر همخوانی نخواهد داشت. برای یکپارچگی، باید محتوای فایل `SOUL.md` و نام نمایشی ربات در تلگرام (از طریق BotFather) را همزمان با هم تغییر دهید!
+
+---
+
 ## 📺 Follow the Channels / دنبال کردن شبکه‌ها
 *   **YouTube (English)**: [@HesabAgent](https://www.youtube.com/@HesabAgent)
 *   **Aparat (Persian)**: [Kia_coder](https://www.aparat.com/Kia_coder)
