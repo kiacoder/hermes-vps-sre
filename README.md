@@ -18,7 +18,7 @@ This repository contains all the configuration files, security policies, and sim
 *   `inject_error.py` — Script to simulate a live Django NameError typo (500 Error).
 *   `restore_code.py` — Script to instantly recover from the simulated error.
 
-### 🚀 Simplified 3-Step VPS Installation Guide
+### 🚀 Simplified 4-Step VPS Installation Guide
 1. **Install Hermes Agent**:
    ```bash
    curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash -s -- --non-interactive --skip-setup
@@ -27,11 +27,16 @@ This repository contains all the configuration files, security policies, and sim
    ```bash
    git clone https://github.com/kiacoder/hermes-vps-sre.git /tmp/hermes-sre
    ```
-3. **Run the Setup Wizard**:
+3. **Verify API & Telegram Connection (Recommended)**:
+   Create a `.env` file from the `env.example` template, fill in your credentials, and run:
+   ```bash
+   python3 /tmp/hermes-sre/test_api.py
+   ```
+4. **Run the Setup Wizard**:
    ```bash
    bash /tmp/hermes-sre/setup.sh
    ```
-   *The setup script will ask for your Gemini API Key, Telegram Bot Token, and allowed User ID. It will then automatically configure files, set permission controls, deploy the sudoers security policy, and start the system service!*
+   *The setup script will ask for your Gemini API Key, Telegram Bot Token, allowed User ID, project path, and systemd service name. It will then automatically configure all templates, set permission controls, deploy the sudoers security policy, and start the system service!*
 
 ---
 
@@ -49,7 +54,7 @@ This repository contains all the configuration files, security policies, and sim
 *   `inject_error.py` — اسکریپت شبیه‌سازی خطای جنگو (خطای ۵۰۰).
 *   `restore_code.py` — اسکریپت بازیابی سریع کدها به حالت عادی.
 
-### 🚀 راهنمای نصب ۳ مرحله‌ای روی سرور
+### 🚀 راهنمای نصب ۴ مرحله‌ای روی سرور
 1. **نصب ایجنت هرمس**:
    ```bash
    curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash -s -- --non-interactive --skip-setup
@@ -58,11 +63,16 @@ This repository contains all the configuration files, security policies, and sim
    ```bash
    git clone https://github.com/kiacoder/hermes-vps-sre.git /tmp/hermes-sre
    ```
-3. **اجرای جادوگر نصب خودکار**:
+3. **تست صحت کلیدها و ارتباط تلگرام (توصیه شده)**:
+   یک فایل `.env` بر اساس فایل `env.example` ایجاد کرده و پس از پر کردن مشخصات، اسکریپت را اجرا کنید:
+   ```bash
+   python3 /tmp/hermes-sre/test_api.py
+   ```
+4. **اجرای جادوگر نصب خودکار**:
    ```bash
    bash /tmp/hermes-sre/setup.sh
    ```
-   *اسکریپت نصب از شما کلید API جمینای، توکن ربات تلگرام و آیدی تلگرام شما را می‌پرسد و سپس تمام فایل‌ها را تنظیم کرده، سطوح دسترسی را اعمال می‌کند و سرویس پس‌زمینه را راه‌اندازی می‌کند!*
+   *اسکریپت نصب از شما کلید API جمینای، توکن ربات تلگرام، آیدی تلگرام، مسیر پروژه و نام سرویس سیستم را می‌پرسد و سپس تمام فایل‌ها را تنظیم کرده، سطوح دسترسی را اعمال می‌کند و سرویس پس‌زمینه را راه‌اندازی می‌کند!*
 
 ---
 
