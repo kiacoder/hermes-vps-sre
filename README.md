@@ -14,6 +14,7 @@ This repository contains all the configuration files, security policies, and sim
 *   `SOUL.md` — The custom system prompt shaping the agent's personality as **Ron Weasley (Muggle IT Specialist)**.
 *   `env.example` — A template for your API keys and secure Telegram allowed-user restrictions.
 *   `sudoers.d_template` — The security policy granting passwordless `systemctl restart` access for your daemon.
+*   `test_api.py` — A diagnostic script to verify your Gemini API key and Telegram connection before running setup.
 *   `inject_error.py` — Script to simulate a live Django NameError typo (500 Error).
 *   `restore_code.py` — Script to instantly recover from the simulated error.
 
@@ -44,6 +45,7 @@ This repository contains all the configuration files, security policies, and sim
 *   `SOUL.md` — دستورالعمل سیستم (پرامپت) برای شکل‌دهی شخصیت ایجنت به عنوان **رون ویزلی (متخصص آی‌تی مشنگ‌ها!)**.
 *   `env.example` — قالب کلیدهای API و ایدی‌های مجاز تلگرام جهت امنیت ربات.
 *   `sudoers.d_template` — سیاست امنیتی برای اعطای دسترسی ری‌استارت سرویس جنگو بدون نیاز به رمز عبور.
+*   `test_api.py` — اسکریپت عیب‌یابی و تست صحت کلیدهای جمینای و اتصال تلگرام قبل از اجرای نصب.
 *   `inject_error.py` — اسکریپت شبیه‌سازی خطای جنگو (خطای ۵۰۰).
 *   `restore_code.py` — اسکریپت بازیابی سریع کدها به حالت عادی.
 
